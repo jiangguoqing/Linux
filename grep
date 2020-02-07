@@ -1,0 +1,34 @@
+grep使用方法
+grep的基本用法
+grep string file
+列出所有命令
+ps -ef | grep root
+-n选项显示行号，^行首定位符
+grep -n '^string:'  file
+grep成功退出0,失败退出2，sed与awk则不使用退出状态。
+打印退出状态
+echo $status/echo $?
+打印所有以数字四结尾的行。
+grep '4$' datafile
+第一个参数是模式，第二三个参数是文件。
+grep string file file
+打印所有包含数字5,后跟一个句点，在跟一个任意字符的行。据点代表
+单个字符，除非被反斜杠转义。
+grep '5\..' file
+打印所有以字母w或e开头的行，方括号中任一字符都可匹配。
+grep '^[we]' file
+打印包含非数字字符的所有行。
+grep '[^0-9]' file
+打印包含所有两个大写字符，后跟一个空格和一个大写字符的行。
+grep '[A-Z][A-z] [A-Z]' file
+
+grep -i选项关闭大小写的敏感。
+grep -v用于反响选择。
+利用-v选项删除特定条目
+grep -v 'string' file > temp
+mv temp file 如果直接重定向，会导致file的摧毁。
+选项-l使grep只输出包含模式的文件名，而不输出问本行。
+grep -l 'SE' *
+选项-w使得grep只查找一个词。
+grep -w 'string' file
+
